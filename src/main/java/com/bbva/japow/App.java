@@ -1,7 +1,9 @@
 package com.bbva.japow;
 
-import com.bbva.japow.cmdline.Japow;
 import picocli.CommandLine;
+
+import com.bbva.japow.cmdline.Japow;
+
 
 /**
  * Japow!
@@ -12,9 +14,7 @@ public class App  {
   public static void main( String[] args ) {
     CommandLine cmd = new CommandLine(new Japow());
 
-    int ret = cmd.execute(args);
-
-    System.exit(ret);
+    System.exit(cmd.execute(args));
   }
 
 }

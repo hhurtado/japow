@@ -1,9 +1,6 @@
 package com.bbva.japow.cmdline;
 
-/**
- * Japow!
- *
- */
+import java.util.concurrent.Callable;
 
 import picocli.CommandLine.HelpCommand;
 import picocli.CommandLine.Command;
@@ -13,9 +10,10 @@ import picocli.CommandLine.Spec;
 import picocli.CommandLine.Model.CommandSpec;
 
 
-import java.util.concurrent.Callable;
-
-
+/**
+ * Japow!
+ *
+ */
 @Command(name="kapow",
         subcommands={HelpCommand.class, VersionCmd.class, RouteCmd.class, ServerCmd.class, GetCmd.class, SetCmd.class},
         mixinStandardHelpOptions = true,
@@ -28,10 +26,10 @@ public class Japow implements Callable<Integer> {
 
   public Japow() { }
 
+  @Override
   public Integer call() {
 
     throw new ParameterException(spec.commandLine(), "Missing required subcommand");
   }
-
 
 }

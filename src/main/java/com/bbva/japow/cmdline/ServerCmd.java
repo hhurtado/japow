@@ -1,13 +1,19 @@
 package com.bbva.japow.cmdline;
 
-import com.bbva.japow.Constants;
+
+import java.util.concurrent.Callable;
+
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.util.concurrent.Callable;
+import com.bbva.japow.Constants;
 
 
+/**
+ * Japow!
+ *
+ */
 @Command(name="server",
         description="Starts a Kapow! server",
         sortOptions=false,
@@ -18,24 +24,24 @@ public class ServerCmd implements Callable<Integer> {
     public ServerCmd() { }
 
     @Option(names="--bind",
-            description="IP address and port to bind the user interface to",
-            defaultValue=Constants.USER_BIND_ADDR,
+            description="IP address and port to bind the user interface to. Overwrites " + Constants.ENVVAR_USER_BIND_ADDR + " environmental variable",
+            defaultValue="${env:" + Constants.ENVVAR_USER_BIND_ADDR + ":-${sys:" + Constants.SYSPROP_USER_BIND_ADDR + ":-" + Constants.USER_BIND_ADDR + "}}",
             paramLabel="string",
             order=0
     )
     String userBindAddr;
 
     @Option(names="--control-bind",
-            description="IP address and port to bind the control interface to",
-            defaultValue=Constants.CONTROL_BIND_ADDR,
+            description="IP address and port to bind the control interface to. Overwrites " + Constants.ENVVAR_CTRL_BIND_ADDR + " environmental variable",
+            defaultValue="${env:" + Constants.ENVVAR_CTRL_BIND_ADDR + ":-${sys:" + Constants.SYSPROP_CTRL_BIND_ADDR + ":-" + Constants.CONTROL_BIND_ADDR + "}}",
             paramLabel="string",
             order=1
     )
     String controlBindAddr;
 
     @Option(names="--data-bind",
-            description="IP address and port to bind the data interface to",
-            defaultValue=Constants.DATA_BIND_ADDR,
+            description="IP address and port to bind the data interface to. Overwrites " + Constants.ENVVAR_DATA_BIND_ADDR + " environmental variable",
+            defaultValue="${env:" + Constants.ENVVAR_DATA_BIND_ADDR + ":-${sys:" + Constants.SYSPROP_DATA_BIND_ADDR + ":-" + Constants.DATA_BIND_ADDR + "}}",
             paramLabel="string",
             order=2
     )
@@ -75,7 +81,9 @@ public class ServerCmd implements Callable<Integer> {
     )
     String powFile;
 
+    @Override
     public Integer call() throws Exception {
+        // TODO: PENDING implementation
         return 0;
     }
 
