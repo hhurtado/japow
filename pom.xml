@@ -13,7 +13,7 @@
 
   <properties>
 
-    <undertow.version>2.0.30.Final</undertow.version>
+    <undertow.version>2.2.15.Final</undertow.version>
     <uuidgen.version>4.0.1</uuidgen.version>
     <picocli.version>4.2.0</picocli.version>
 
